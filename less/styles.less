@@ -1,0 +1,97 @@
+//variables
+@background-color: #f4f4f4;
+@font-family:Tahoma;
+@primary-color:#3b5998;
+@secondary-color:#20B2AA;
+@danger-color:#dc3545;
+@line-height: 1em + 1em;
+
+// Text color Mixin
+.text-color(@a) when (lightness(@a) >= 50%){
+    color:black;
+}
+.text-color(@a) when (lightness(@a) <= 50%){
+    color:white;
+}
+
+body{
+    font-family: @font-family;
+    background: @background-color;
+    line-height: @line-height;
+}
+// h1, h3{
+//     .bordered
+// }
+h2{
+float: left;
+color:@primary-color;
+}
+.primary-text{
+    color: @primary-color;
+}
+.btn{
+    padding: 10px 15px;
+    border:0;
+    .border-radius(10px);
+}
+.primary-btn{
+    &-read:extend(.btn){
+        background:@primary-color;
+        .text-color(@primary-color);
+    }
+    &-delete:extend(.btn){
+        background:@danger-color;
+        .text-color(@primary-color); 
+    }
+    
+}
+ul#menu{
+    list-style: none;
+    overflow: hidden;
+    li{
+        float: right;
+        margin: 5px;
+        
+        a{  
+            display: block;
+            color:@secondary-color;
+            text-decoration: none;
+            padding: 15px 20px;
+            .bordered(#ccc);
+            .border-radius(10px);
+            &:hover{
+                color:@primary-color;
+                background-color:lighten(@secondary-color,50%);
+                
+                .bordered(#777)
+
+            }
+        }
+    }
+}
+div.media{
+    background-color:lighten(@secondary-color,50%);
+    margin: 5px;
+    .bordered(#ccc);
+    float: left;
+    width: 250px;
+    img {
+        width: 100%;
+        height: auto;
+      }
+    .media-body{
+        padding: 10px;
+        text-align: center;
+    }
+    &:hover{
+        .bordered(#777);
+    }
+}
+
+
+.border-radius(@radius){
+    border-radius:@radius;
+}
+.bordered(@color){
+    border: 1px solid @color;
+}
